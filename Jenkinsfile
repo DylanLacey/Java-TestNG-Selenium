@@ -16,8 +16,9 @@ node {
 
         stage ('Go') {
             sauce('dylan_USW') {
-            sauceconnect(useGeneratedTunnelIdentifier: true, verboseLogging: true) {
-              sh "mvn test"
+                sauceconnect(useGeneratedTunnelIdentifier: true, verboseLogging: true) {
+                  sh "mvn test"
+                }
             }
         }
     }
