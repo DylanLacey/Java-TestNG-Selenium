@@ -1,6 +1,6 @@
 node {
-    tool name: 'Maven 3.6.1', type: 'maven'
     tool name: 'OpenJDK 11', type: 'jdk'
+    tool name: 'Maven 3.6.1', type: 'maven'
 
     stage('Get Ready') {
         // Get some code from a GitHub repository
