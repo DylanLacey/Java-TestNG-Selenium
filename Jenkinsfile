@@ -1,7 +1,8 @@
 node {
     tool name: 'OpenJDK 11', type: 'jdk'
     tool name: 'Maven 3.6.1', type: 'maven'
-
+    jdk('OpenJDK 11')
+    
     stage('Get Ready') {
         // Get some code from a GitHub repository
         checkout scm
