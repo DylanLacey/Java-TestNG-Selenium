@@ -8,19 +8,15 @@ node {
         checkout scm
         // Note: if this is copy and pasted into pipeline script, the following will work while the above handles branches and such
         // git url: 'https://github.com/saucelabs-sample-test-frameworks/Java-TestNG-Selenium.git'
-        maven("mvn install")
-    }
-
-    stage('Go') {
-        sauce('dylan_USW') {
-            sauceconnect(useGeneratedTunnelIdentifier: true, verboseLogging: true) {
-               maven("test")
+        maven("mvn install") {
+            sauce('dylan_USW') {
+                sauceconnect(useGeneratedTunnelIdentifier: true, verboseLogging: true) {
+                   maven("test") {
+                       step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+                       step([$class: 'SauceOnDemandTestPublisher'])
+                   }
+                }
             }
         }
-    }
-
-    stage('Collect Results') {
-        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-        step([$class: 'SauceOnDemandTestPublisher'])
     }
 }
