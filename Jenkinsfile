@@ -7,13 +7,13 @@ node {
         checkout scm
         // Note: if this is copy and pasted into pipeline script, the following will work while the above handles branches and such
         // git url: 'https://github.com/saucelabs-sample-test-frameworks/Java-TestNG-Selenium.git'
-        sh "mvn install"
+        withMaven(jdk: 'OpenJDK 11') {sh "mvn install"}
     }
 
     stage('Go') {
         sauce('dylan_USW') {
             sauceconnect(useGeneratedTunnelIdentifier: true, verboseLogging: true) {
-              sh "mvn test"
+                withMaven(jdk: 'OpenJDK 11') {sh "mvn test"}
             }
         }
     }
