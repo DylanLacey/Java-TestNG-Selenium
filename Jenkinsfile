@@ -1,8 +1,6 @@
 node {
-    tools {
-      maven 'Maven 3.6.1'
-      jdk 'OpenJDK 11'
-    }
+tool name: 'Maven 3.6.1', type: 'maven'
+tool name: 'OpenJDK 11', type: 'jdk'
 
     stages {
     // Mark the code checkout 'stage'....
