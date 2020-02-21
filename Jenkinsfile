@@ -13,6 +13,7 @@ node {
 
     stage('Go') {
         sauce('dylan_USW') {
+            sh "echo ################################################################"
             sh "echo $SAUCE_USERNAME"
             sauceconnect(useGeneratedTunnelIdentifier: true, verboseLogging: true) {
                 withMaven(jdk: 'OpenJDK 11') {sh "mvn test"}
