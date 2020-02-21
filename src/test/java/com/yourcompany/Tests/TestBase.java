@@ -141,6 +141,7 @@ public class TestBase  {
         capabilities.setCapability(CapabilityType.VERSION, version);
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", methodName);
+        capabilities.setCapability("tunnelIdentifier", "TUNNEL_IDENTIFIER");
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
